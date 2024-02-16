@@ -4,6 +4,8 @@ import 'package:irshad_codex/presentation/landing/landing_screen.dart';
 import 'package:irshad_codex/presentation/login/login_screen.dart';
 
 import 'core/constants.dart';
+import 'presentation/invoice/widgets/invoice_view_screen.dart';
+import 'presentation/product/widgets/product_create_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,19 +23,17 @@ class MyApp extends StatelessWidget {
         useMaterial3: false,
         // Define the default brightness and colors.
         // brightness: Brightness.dark,
-        primaryColor: kMaterialPrimaryColor,
-        hintColor: kMaterialPrimaryColor,
+        // primaryColor: kBlack,
+        // hintColor: kMaterialPrimaryColor,
         // Define the default font family.
-        fontFamily: 'OpenSans',
-        colorScheme:
-            ColorScheme.fromSwatch(primarySwatch: kMaterialPrimaryColor)
-                .copyWith(secondary: kMaterialPrimaryColor),
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: primaryBlack)
+            .copyWith(secondary: primaryBlack),
 
         // Define the default TextTheme. Use this to specify the default
         // text styling for headlines, titles, bodies of text, and more.
       ),
       debugShowCheckedModeBanner: false,
-      home: const CreateCustomerScreen(),
+      home: InvoiceViewScreen(),
     );
   }
 }

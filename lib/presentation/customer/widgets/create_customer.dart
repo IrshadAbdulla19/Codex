@@ -1,9 +1,12 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:irshad_codex/core/constants.dart';
+import 'package:irshad_codex/presentation/widgets/commen_text_widgets.dart';
 
 class CreateCustomerScreen extends StatelessWidget {
-  const CreateCustomerScreen({super.key});
+  CreateCustomerScreen({super.key});
+
+  final TextEditingController controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -16,16 +19,30 @@ class CreateCustomerScreen extends StatelessWidget {
               margin: const EdgeInsets.symmetric(horizontal: 10),
               elevation: 8,
               color: Colors.white,
-              shadowColor: kMaterialPrimaryColor,
+              shadowColor: primaryBlack,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: const Padding(
-                padding: EdgeInsets.all(15.0),
+              child: Padding(
+                padding: const EdgeInsets.all(15.0),
                 child: Column(
                   children: [
-                    TextFormWidget(),
-                    TextFormWidget(),
+                    TextFormWidget(
+                      controller: controller,
+                      head: "Party name",
+                      widget: Text(
+                        "*",
+                        style: TextStyle(color: kRed),
+                      ),
+                    ),
+                    TextFormWidget(
+                      controller: controller,
+                      head: "Coustomer name",
+                      widget: Text(
+                        "*",
+                        style: TextStyle(color: kRed),
+                      ),
+                    ),
                   ],
                 ),
               )),
@@ -36,11 +53,24 @@ class CreateCustomerScreen extends StatelessWidget {
               length: 3, // Number of tabs
               child: Column(
                 children: [
-                  TabBar(
+                  const TabBar(
                     tabs: [
-                      Tab(text: 'Bussiness info'),
-                      Tab(text: 'Credit Info'),
-                      Tab(text: 'Other Details'),
+                      Tab(
+                        child: Text(
+                          "Bussiness info",
+                          style: TextStyle(color: kBlack),
+                        ),
+                      ),
+                      Tab(
+                          child: Text(
+                        "Credit Info",
+                        style: TextStyle(color: kBlack),
+                      )),
+                      Tab(
+                          child: Text(
+                        "Other Details",
+                        style: TextStyle(color: kBlack),
+                      )),
                     ],
                   ),
                   SizedBox(
@@ -51,33 +81,48 @@ class CreateCustomerScreen extends StatelessWidget {
                         Column(
                           children: [
                             Card(
-                                margin: EdgeInsets.symmetric(horizontal: 10),
+                                margin:
+                                    const EdgeInsets.symmetric(horizontal: 10),
                                 elevation: 8,
                                 color: Colors.white,
-                                shadowColor: kMaterialPrimaryColor,
+                                shadowColor: primaryBlack,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20),
                                 ),
-                                child: const Padding(
-                                  padding: EdgeInsets.all(15.0),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(15.0),
                                   child: Column(
                                     children: [
-                                      TextFormWidget(),
-                                      TextFormWidget(),
+                                      TextFormWidget(
+                                        controller: controller,
+                                        head: "",
+                                        widget: Text(
+                                          "*",
+                                          style: TextStyle(color: kRed),
+                                        ),
+                                      ),
+                                      TextFormWidget(
+                                        controller: controller,
+                                        head: "",
+                                        widget: Text(
+                                          "*",
+                                          style: TextStyle(color: kRed),
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 )),
                             Card(
-                              margin: EdgeInsets.symmetric(
+                              margin: const EdgeInsets.symmetric(
                                   horizontal: 10, vertical: 10),
                               elevation: 8,
                               color: Colors.white,
-                              shadowColor: kMaterialPrimaryColor,
+                              shadowColor: primaryBlack,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
+                              child: const Padding(
+                                padding: EdgeInsets.all(8.0),
                                 child: Row(
                                   children: [
                                     Icon(Icons.abc),
@@ -89,15 +134,15 @@ class CreateCustomerScreen extends StatelessWidget {
                               ),
                             ),
                             ElevatedButton(
-                                onPressed: () {}, child: Text("Save"))
+                                onPressed: () {}, child: const Text("Save"))
                           ],
                         ),
                         // Contents of Tab 2
-                        Center(
+                        const Center(
                           child: Text('Tab 2 Content'),
                         ),
                         // Contents of Tab 3
-                        Center(
+                        const Center(
                           child: Text('Tab 3 Content'),
                         ),
                       ],
@@ -114,16 +159,23 @@ class CreateCustomerScreen extends StatelessWidget {
 }
 
 class TextFormWidget extends StatelessWidget {
-  const TextFormWidget({
-    super.key,
-  });
+  const TextFormWidget(
+      {super.key,
+      required this.widget,
+      required this.head,
+      required this.controller});
+  final Widget widget;
+  final String head;
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const AutoSizeText("Party Name"),
+        Row(
+          children: [smallHeadText(head), widget],
+        ),
         kHeight10,
         TextFormField(
           decoration: InputDecoration(

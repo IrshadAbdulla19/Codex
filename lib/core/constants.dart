@@ -1,8 +1,10 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 const kBlack = Colors.black;
 const kWhite = Colors.white;
 const kGray = Colors.grey;
+const kRed = Colors.red;
 
 const kHeight10 = SizedBox(
   height: 10,
@@ -13,6 +15,54 @@ const kHeight5 = SizedBox(
 const kHeight20 = SizedBox(
   height: 20,
 );
+const kWidth10 = SizedBox(
+  width: 10,
+);
+const kWidth5 = SizedBox(
+  width: 5,
+);
+const kWidth20 = SizedBox(
+  width: 20,
+);
+
+const MaterialColor primaryBlack = MaterialColor(
+  _blackPrimaryValue,
+  <int, Color>{
+    50: Color(0xFF000000),
+    100: Color(0xFF000000),
+    200: Color(0xFF000000),
+    300: Color(0xFF000000),
+    400: Color(0xFF000000),
+    500: Color(_blackPrimaryValue),
+    600: Color(0xFF000000),
+    700: Color(0xFF000000),
+    800: Color(0xFF000000),
+    900: Color(0xFF000000),
+  },
+);
+const int _blackPrimaryValue = 0xFF000000;
+const MaterialColor primaryWhite = MaterialColor(
+  _whitePrimaryValue,
+  <int, Color>{
+    50: Color(0xFFFFFFFF),
+    100: Color(0xFFFFFFFF),
+    200: Color(0xFFFFFFFF),
+    300: Color(0xFFFFFFFF),
+    400: Color(0xFFFFFFFF),
+    500: Color(_whitePrimaryValue),
+    600: Color(0xFFFFFFFF),
+    700: Color(0xFFFFFFFF),
+    800: Color(0xFFFFFFFF),
+    900: Color(0xFFFFFFFF),
+  },
+);
+const int _whitePrimaryValue = 0xFFFFFFFF;
+
+// Color? accentColor,
+// Color? cardColor,
+// Color? backgroundColor,
+// Color? errorColor,
+// Brightness brightness = Brightness.light,
 
 const MaterialColor kMaterialPrimaryColor =
     MaterialColor(_kmaterialprimarycolorPrimaryValue, <int, Color>{
